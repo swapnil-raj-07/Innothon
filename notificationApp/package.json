@@ -1,0 +1,44 @@
+{
+  "name": "notificationapp",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "npm run build & electron .",
+    "build": "tsc && electron-builder",
+    "pack": "electron-packager . SystemDetailsApp --platform win32 --arch x64 --out dist/packaged",
+    "dist": "electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Notification App",
+  "build": {
+    "appId": "com.example.electronnotificationapp",
+    "productName": "ElectronNotificationApp",
+    "files": [
+      "dist/**/*",
+      "src/icon.png"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "dns": "^0.2.2",
+    "electron-is-dev": "^3.0.1",
+    "os": "^0.1.2"
+  }
+}
