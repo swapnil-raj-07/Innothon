@@ -1,0 +1,9 @@
+# Node modules
+**/node_modules/
+
+# Compiled files
+**/dist/
+
+# Optional: Ignore other build directories
+**/build/
+**/out/
