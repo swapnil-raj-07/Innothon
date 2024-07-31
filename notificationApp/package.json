@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "npm run build & electron .",
-    "build": "tsc && electron-builder",
+    "build": "tsc",
     "pack": "electron-packager . SystemDetailsApp --platform win32 --arch x64 --out dist/packaged",
     "dist": "electron-builder"
   },
@@ -13,21 +13,9 @@
   "author": "",
   "license": "ISC",
   "description": "Notification App",
-  "build": {
-    "appId": "com.example.electronnotificationapp",
-    "productName": "ElectronNotificationApp",
-    "files": [
-      "dist/**/*",
-      "src/icon.png"
-    ],
-    "directories": {
-      "output": "release"
-    },
-    "win": {
-      "target": [
-        "nsis"
-      ]
-    }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swapnil-raj-07/Innothon/blob/main/README.md"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

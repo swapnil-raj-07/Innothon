@@ -7,3 +7,5 @@
 # Optional: Ignore other build directories
 **/build/
 **/out/
+**/release/
+**/.db/
