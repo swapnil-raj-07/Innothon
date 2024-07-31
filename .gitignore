@@ -8,4 +8,4 @@
 **/build/
 **/out/
 **/release/
-**/.db/
+**/*.db/

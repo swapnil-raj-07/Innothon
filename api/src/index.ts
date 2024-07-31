@@ -3,7 +3,7 @@ import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 
 const app = express();
-const dbName = './poc.db';
+const dbName = './innothon.db';
 
 app.use(express.json());
 
@@ -18,10 +18,42 @@ const openDb = async () => {
 // Initialize database
 (async () => {
   const db = await openDb();
-  await db.exec(`CREATE TABLE IF NOT EXISTS items (
+  await db.exec(`CREATE TABLE IF NOT EXISTS User (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    value INTEGER NOT NULL
+    hostName TEXT NOT NULL,
+    firstName TEXT NULL,
+    lastName TEXT NULL
+  )`);
+
+  await db.exec(`CREATE TABLE IF NOT EXISTS MasterMessages (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    message TEXT NOT NULL,
+    createdDate TEXT NOT NULL,
+    createdBy TEXT NOT NULL,
+    sendFrequency INTEGER NOT NULL,
+    tillDate TEXT NOT NULL,
+    active INTEGER NOT NULL
+  )`);
+
+  await db.exec(`CREATE TABLE IF NOT EXISTS Admin (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    FirstName	TEXT NOT NULL,
+    LastName TEXT NOT NULL,
+    EmailId	TEXT NOT NULL,
+    active INTEGER NOT NULL
+  )`);
+
+  await db.exec(`CREATE TABLE IF NOT EXISTS UserMessage (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    messageId	INTEGER NOT NULL,
+    UserId 	INTEGER NOT NULL,
+    active INTEGER NOT NULL
+  )`);
+
+  await db.exec(`CREATE TABLE IF NOT EXISTS UserMessageHistory (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    UserMessageId	 INTEGER NOT NULL,
+    sentDate TEXT NOT NULL
   )`);
 })();
 
