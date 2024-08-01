@@ -1,0 +1,16 @@
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\bin\Debug\cyberSafe.exe.config
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\bin\Debug\cyberSafe.exe
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\bin\Debug\cyberSafe.pdb
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\obj\Debug\cyberSafe.csproj.AssemblyReference.cache
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\obj\Debug\cyberSafe.Properties.Resources.resources
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\obj\Debug\cyberSafe.csproj.GenerateResource.cache
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\obj\Debug\cyberSafe.csproj.CoreCompileInputs.cache
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\obj\Debug\cyberSafe.exe
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\obj\Debug\cyberSafe.pdb
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\bin\Debug\Microsoft.Toolkit.Uwp.Notifications.dll
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\bin\Debug\System.ValueTuple.dll
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\bin\Debug\Microsoft.Toolkit.Uwp.Notifications.pdb
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\obj\Debug\cyberSafe.csproj.Up2Date
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\obj\Debug\cyberSafe.csproj.SuggestedBindingRedirects.cache
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\obj\Debug\cyberSafe.exe.config
+C:\Hacaton\CyberSafe\cyberSafe\cyberSafe\obj\Debug\cyberSafe.MainForm.resources

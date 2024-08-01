@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Hacaton\\CyberSafe\\cyberSafe\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|cyberSafe\\cyberSafe.csproj|c:\\hacaton\\cybersafe\\cybersafe\\cybersafe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|cyberSafe\\cyberSafe.csproj|solutionrelative:cybersafe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|cyberSafe\\cyberSafe.csproj|c:\\hacaton\\cybersafe\\cybersafe\\cybersafe\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|cyberSafe\\cyberSafe.csproj|solutionrelative:cybersafe\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|cyberSafe\\cyberSafe.csproj|c:\\hacaton\\cybersafe\\cybersafe\\cybersafe\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|cyberSafe\\cyberSafe.csproj|solutionrelative:cybersafe\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Hacaton\\CyberSafe\\cyberSafe\\cyberSafe\\Form1.cs",
+              "RelativeDocumentMoniker": "cyberSafe\\Form1.cs",
+              "ToolTip": "C:\\Hacaton\\CyberSafe\\cyberSafe\\cyberSafe\\Form1.cs [Design]",
+              "RelativeToolTip": "cyberSafe\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-31T17:42:25.611Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Hacaton\\CyberSafe\\cyberSafe\\cyberSafe\\Program.cs",
+              "RelativeDocumentMoniker": "cyberSafe\\Program.cs",
+              "ToolTip": "C:\\Hacaton\\CyberSafe\\cyberSafe\\cyberSafe\\Program.cs",
+              "RelativeToolTip": "cyberSafe\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-31T16:21:44.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Hacaton\\CyberSafe\\cyberSafe\\cyberSafe\\Form1.cs",
+              "RelativeDocumentMoniker": "cyberSafe\\Form1.cs",
+              "ToolTip": "C:\\Hacaton\\CyberSafe\\cyberSafe\\cyberSafe\\Form1.cs",
+              "RelativeToolTip": "cyberSafe\\Form1.cs",
+              "ViewState": "AQIAANQAAAAAAAAAAAAYwP0AAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-31T16:03:05.466Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

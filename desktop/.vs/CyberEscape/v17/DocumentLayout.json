@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Hacaton\\Innothon\\desktop\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|CyberEscape\\CyberEscape.csproj|c:\\hacaton\\innothon\\desktop\\cyberescape\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|CyberEscape\\CyberEscape.csproj|solutionrelative:cyberescape\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|CyberEscape\\CyberEscape.csproj|c:\\hacaton\\innothon\\desktop\\cyberescape\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|CyberEscape\\CyberEscape.csproj|solutionrelative:cyberescape\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|CyberEscape\\CyberEscape.csproj|c:\\hacaton\\innothon\\desktop\\cyberescape\\properties\\settings.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|CyberEscape\\CyberEscape.csproj|solutionrelative:cyberescape\\properties\\settings.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|CyberEscape\\CyberEscape.csproj|c:\\hacaton\\innothon\\desktop\\cyberescape\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|CyberEscape\\CyberEscape.csproj|solutionrelative:cyberescape\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|CyberEscape\\CyberEscape.csproj|c:\\hacaton\\innothon\\desktop\\cyberescape\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|CyberEscape\\CyberEscape.csproj|solutionrelative:cyberescape\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|CyberEscape\\CyberEscape.csproj|c:\\hacaton\\innothon\\desktop\\cyberescape\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19461301-2E24-4D30-987A-FBBFFE9136BF}|CyberEscape\\CyberEscape.csproj|solutionrelative:cyberescape\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Settings.Designer.cs",
+              "DocumentMoniker": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\Properties\\Settings.Designer.cs",
+              "RelativeDocumentMoniker": "CyberEscape\\Properties\\Settings.Designer.cs",
+              "ToolTip": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\Properties\\Settings.Designer.cs",
+              "RelativeToolTip": "CyberEscape\\Properties\\Settings.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-01T04:44:18.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Resources.Designer.cs",
+              "DocumentMoniker": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\Properties\\Resources.Designer.cs",
+              "RelativeDocumentMoniker": "CyberEscape\\Properties\\Resources.Designer.cs",
+              "ToolTip": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\Properties\\Resources.Designer.cs",
+              "RelativeToolTip": "CyberEscape\\Properties\\Resources.Designer.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAADgvy4AAAB9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-01T04:44:03.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\Program.cs",
+              "RelativeDocumentMoniker": "CyberEscape\\Program.cs",
+              "ToolTip": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\Program.cs",
+              "RelativeToolTip": "CyberEscape\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-01T04:43:51.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "CyberEscape\\Form1.Designer.cs",
+              "ToolTip": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\Form1.Designer.cs",
+              "RelativeToolTip": "CyberEscape\\Form1.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-01T04:43:43.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\Properties\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "CyberEscape\\Properties\\AssemblyInfo.cs",
+              "ToolTip": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\Properties\\AssemblyInfo.cs",
+              "RelativeToolTip": "CyberEscape\\Properties\\AssemblyInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-01T04:43:06.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\Form1.cs",
+              "RelativeDocumentMoniker": "CyberEscape\\Form1.cs",
+              "ToolTip": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\Form1.cs",
+              "RelativeToolTip": "CyberEscape\\Form1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-01T04:36:05.571Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
