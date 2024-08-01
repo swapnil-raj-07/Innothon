@@ -1,4 +1,4 @@
-# Innothon Project
+# Cyber Security Awareness Project
 
 ## Project Description
 
