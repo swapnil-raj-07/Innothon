@@ -28,7 +28,28 @@ export const DataProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  const contextValue = useMemo(() => ({ dataA, loading, error }), [dataA, loading, error]);
+  const postData = async (url, data) => {
+    setLoading(true);
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await response.json();
+      console.log('Posted data:', result);
+      return result;
+    } catch (err) {
+      setError(err);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const contextValue = useMemo(() => ({ dataA, loading, error, postData }), [dataA, loading, error]);
 
   console.log('Current dataA:', dataA);
 
