@@ -40,6 +40,7 @@ export default function UserPage() {
           <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
             <Typography variant="h4"> Send Message </Typography>
           </Stack>
+          <TextField name="header" label="Header" required />
           <TextField name="message" label="Message" required multiline rows={4} />
           <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
             <TextField name="pointer" label="Pointer" type="number" required />
