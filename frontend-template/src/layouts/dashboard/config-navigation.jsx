@@ -10,7 +10,7 @@ const navConfig = (admin) => {
   const navi = [
     {
       title: 'user dashboard',
-      path: '/blog',
+      path: '/',
       icon: icon('ic_user'),
     },
     // {
@@ -32,12 +32,12 @@ const navConfig = (admin) => {
   if (admin) {
     navi.unshift({
       title: 'message',
-      path: '/user',
+      path: '/message',
       icon: icon('ic_message'),
     });
     navi.unshift({
       title: 'admin dashboard',
-      path: '/',
+      path: '/admin',
       icon: icon('ic_analytics'),
     });
   }

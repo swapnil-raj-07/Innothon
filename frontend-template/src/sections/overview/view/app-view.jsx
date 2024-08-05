@@ -113,7 +113,7 @@ export default function AppView() {
           />
         </Grid>
 
-        {/* <Grid xs={12} md={6} lg={8}>
+         <Grid xs={12} md={6} lg={8}>
           <AppConversionRates
             title="Conversion Rates"
             subheader="(+43%) than last year"
@@ -132,9 +132,9 @@ export default function AppView() {
               ],
             }}
           />
-        </Grid> */}
+        </Grid> 
 
-        {/* <Grid xs={12} md={6} lg={4}>
+        <Grid xs={12} md={6} lg={4}>
           <AppCurrentSubject
             title="Current Subject"
             chart={{
@@ -146,9 +146,9 @@ export default function AppView() {
               ],
             }}
           />
-        </Grid> */}
+        </Grid>
 
-        {/* <Grid xs={12} md={6} lg={8}>
+        <Grid xs={12} md={6} lg={8}>
           <AppNewsUpdate
             title="News Update"
             list={[...Array(5)].map((_, index) => ({
@@ -159,9 +159,9 @@ export default function AppView() {
               postedAt: faker.date.recent(),
             }))}
           />
-        </Grid> */}
+        </Grid> 
 
-        {/* <Grid xs={12} md={6} lg={4}>
+        <Grid xs={12} md={6} lg={4}>
           <AppOrderTimeline
             title="Order Timeline"
             list={[...Array(5)].map((_, index) => ({
@@ -177,9 +177,9 @@ export default function AppView() {
               time: faker.date.past(),
             }))}
           />
-        </Grid> */}
+        </Grid> 
 
-        {/* <Grid xs={12} md={6} lg={4}>
+        <Grid xs={12} md={6} lg={4}>
           <AppTrafficBySite
             title="Traffic by Site"
             list={[
@@ -205,9 +205,9 @@ export default function AppView() {
               },
             ]}
           />
-        </Grid> */}
+        </Grid> 
 
-        {/* <Grid xs={12} md={6} lg={8}>
+        <Grid xs={12} md={6} lg={8}>
           <AppTasks
             title="Tasks"
             list={[
@@ -218,7 +218,7 @@ export default function AppView() {
               { id: '5', name: 'Sprint Showcase' },
             ]}
           />
-        </Grid> */}
+        </Grid> 
       </Grid>
     </Container>
   );

@@ -4,26 +4,21 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
-import Typography from '@mui/material/Typography';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+
 
 import { posts } from 'src/_mock/blog';
 
 import Iconify from 'src/components/iconify';
 
 import PostCard from '../post-card';
-import PostSort from '../post-sort';
-import PostSearch from '../post-search';
-
-import CartWidget from '../../products/product-cart-widget';
 
 // ----------------------------------------------------------------------
 
-export default function BlogView() {
+export default function UserDashboardView() {
   const [userPosts, setUserPosts] = useState(posts);
 
   const handleRadioChange = (event) => {
