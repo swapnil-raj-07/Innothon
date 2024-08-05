@@ -1,23 +1,47 @@
 POST Requests: 
-1) http://localhost:3000/user
-{ "hostName": "PC-ABC", "firstName": "TestUser", "lastName": "LN" }
+1) UserGroups: http://localhost:3000/userGroups
+    { "groupName: "", createdDate: "2024-08-04", createdBy:"priming", isActive: 1 }
 
-2) POST: http://localhost:3000/masterMessage
-{ "message": "Be cautious of unsolicited emails or messages asking for personal information", "createdDate": "2024-08-01", "createdBy": "priming", "sendFrequency": "1", "tillDate": "2024-08-31", "active": "1" }
 
-3) POST: http://localhost:3000/admin
+2) MessageType: http://localhost:3000/messageType
+    { "typeName": "", "createdDate": "2024-08-04", "createdBy": "priming", "isActive": 1 }   
+
+3) MessageMode: http://localhost:3000/messageMode 
+    { "modeName": "", "createdDate": "2024-08-04", "createdBy": "priming", "isActive": 1 }
+
+4) user: http://localhost:3000/user
+{ "hostName":"", "firstName":"",  "lastName":"",  "emailId":"", "password":"",  "groupId":"", "createdDate":"", "createdBy":"", "isActive": }
+
+5) notification: POST: http://localhost:3000/notification
+{ "header:"",
+  "body:"",
+  "type: ,
+  "groupId: ,
+  "scheduledDate:"",
+  "scheduledTime:"",
+  "mode: ,
+  "points: ,
+  "imagePath:"",
+  "createdDate:"",
+  "createdBy:"",
+  "active: }
+
+6) admin: POST: http://localhost:3000/admin
 { "firstName": "TestAdmin", "lastName": "LN", "emailId": "testadmin@test.com", "active": "1" }
 
-4) POST: http://localhost:3000/userMessage
-{ "messageId": "1", "userId": "1", "active": "1", "createdDate": "2024-08-01", "createdById": 1 }
+7) userNotification: POST: http://localhost:3000/userNotification
+{ "notificationId: , "userId: , "createdDate:"", "createdBy:"", "active: 1 }
 
 
 GET Requests:
 
 1) GET: http://localhost:3000/user
-2) GET: http://localhost:3000/masterMessage
+2) GET: http://localhost:3000/notification
 3) GET: http://localhost:3000/admin
-4) GET: http://localhost:3000/userMessage
+4) GET: http://localhost:3000/userNotification
+5) GET: http://localhost:3000/userGroups
+6) GET: http://localhost:3000/messageType
+7) GET: http://localhost:3000/messageMode 
 
 
 
