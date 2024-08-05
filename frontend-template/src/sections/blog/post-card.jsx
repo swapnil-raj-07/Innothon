@@ -18,7 +18,7 @@ import Label from 'src/components/label';
 // ----------------------------------------------------------------------
 
 export default function PostCard({ post, index }) {
-  const { cover, title, view, comment, share, author, createdAt, pointer } = post;
+  const { cover, title, isRead,  author, createdAt, pointer } = post;
 
   const latestPostLarge = index === 0 || index === 1;
 
@@ -80,9 +80,8 @@ export default function PostCard({ post, index }) {
       {[
         // { number: comment, icon: 'eva:message-circle-fill' },
         // { number: view, icon: 'eva:eye-fill' },
-        { number: (Number(pointer)/2), icon: 'eva:clock-fill' },
+        { number: Number(pointer) / 2, icon: 'eva:clock-fill' },
         { number: pointer, icon: 'eva:award-fill' },
-
       ].map((info, _index) => (
         <Stack
           key={_index}
@@ -152,19 +151,21 @@ export default function PostCard({ post, index }) {
   return (
     <Grid xs={12} sm={latestPostLarge ? 12 : 6} md={latestPostLarge ? 6 : 3}>
       <Card>
-      <Label
-      variant="filled"
-      color="error"
-      sx={{
-        zIndex: 9,
-        top: 16,
-        right: 16,
-        position: 'absolute',
-        textTransform: 'uppercase',
-      }}
-    >
-      unread
-    </Label>
+        <Label
+          variant="filled"
+          color="error"
+          
+          sx={{
+            zIndex: 9,
+            top: 16,
+            right: 16,
+            position: 'absolute',
+            textTransform: 'uppercase',
+            display: isRead ? 'none' :'inline-flex'
+          }}
+        >
+          unread
+        </Label>
         <Box
           sx={{
             position: 'relative',
@@ -211,7 +212,6 @@ export default function PostCard({ post, index }) {
 
           {renderInfo}
         </Box>
-        
       </Card>
     </Grid>
   );
