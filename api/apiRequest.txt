@@ -161,6 +161,14 @@ GET Requests:
 10) GET: http://localhost:3000/userNotificationAll
 
 
+PUT request:
+
+userNotification: PUT: http://localhost:3000/userNotification?notificationId=123&userId=1
+{ "isRead": 1 }
+
+
+
+
 
 
 

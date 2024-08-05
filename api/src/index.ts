@@ -469,6 +469,34 @@ INNER JOIN MessageMode mm ON mm.id = n.mode`);
   res.status(200).json(items);
 });
 
+//Put requests
+app.put('/userNotification', async (req, res) => {
+  const { notificationId, userId } = req.query;
+  const { isRead } = req.body;
+
+  if (!notificationId || !userId) {
+    return res.status(400).json({ error: 'Both notificationId and userId are required' });
+  }
+
+  if (isRead === undefined) {
+    return res.status(400).json({ error: 'The isRead field is required' });
+  }
+
+  const db = await openDb();
+  const result = await db.run(
+    'UPDATE UserNotification SET isRead = ? WHERE notificationId = ? AND userId = ?',
+    [isRead, notificationId, userId]
+  );
+
+  if (result.changes === 0) {
+    return res.status(404).json({ error: 'Notification not found for the given user' });
+  }
+
+  res.status(200).json({ message: 'Notification updated successfully', notificationId, userId, isRead });
+});
+
+
+
 
 app.use(express.static('public'));
 app.use('/images', express.static('images'));
