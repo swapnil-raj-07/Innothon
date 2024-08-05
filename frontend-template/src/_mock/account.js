@@ -6,3 +6,4 @@ export const account = {
   photoURL: '/assets/images/avatars/avatar_25.jpg',
   isAdmin: true,
 };
+
