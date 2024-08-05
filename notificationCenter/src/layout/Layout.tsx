@@ -56,21 +56,6 @@ function Layout() {
             <div
               onClick={() =>
                 onSelect(
-                  [...openedNotificationState],
-                  NotificationType.openedNotifications
-                )
-              }
-              className={`${
-                notificationType === NotificationType.openedNotifications
-                  ? " scale-110 text-cyan-700 ml-2"
-                  : "hover:bg-slate-800"
-              } delay-100 transition-all cursor-pointer p-4 `}
-            >
-              Opened Notifications
-            </div>
-            <div
-              onClick={() =>
-                onSelect(
                   [...acknowledgedNotificationState],
                   NotificationType.acknowledgedNotifications
                 )
@@ -82,6 +67,21 @@ function Layout() {
               } delay-100 transition-all cursor-pointer p-4 `}
             >
               Acknowledged Notifications
+            </div>
+            <div
+              onClick={() =>
+                onSelect(
+                  [...openedNotificationState],
+                  NotificationType.openedNotifications
+                )
+              }
+              className={`${
+                notificationType === NotificationType.openedNotifications
+                  ? " scale-110 text-cyan-700 ml-2"
+                  : "hover:bg-slate-800"
+              } delay-100 transition-all cursor-pointer p-4 `}
+            >
+              Opened Notifications
             </div>
           </div>
         </div>
