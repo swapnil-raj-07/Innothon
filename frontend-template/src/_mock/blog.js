@@ -314,7 +314,6 @@ export const posts = POST_TITLES.map((post, index) => ({
   cover: `/assets/images/covers/cover_${(index % 24) + 1}.jpg`,
   title: post.title,
   desc: post.desc,
-  pointer: 5,
   isRead: READ_NOTIFICATION_ID.includes(post.id),
   createdAt: faker.date.past(),
   pointer: post.pointer,
