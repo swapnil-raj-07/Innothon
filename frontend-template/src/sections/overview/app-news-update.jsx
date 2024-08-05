@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Card from '@mui/material/Card';
@@ -10,13 +9,12 @@ import Typography from '@mui/material/Typography';
 import CardHeader from '@mui/material/CardHeader';
 
 import { fToNow } from 'src/utils/format-time';
-
 import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
 
 // ----------------------------------------------------------------------
 
-export default function AppNewsUpdate({ title, subheader, list, ...other }) {
+export default function AppNewsUpdate({ title, subheader, list, onNewsClick, ...other }) {
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
@@ -24,7 +22,7 @@ export default function AppNewsUpdate({ title, subheader, list, ...other }) {
       <Scrollbar>
         <Stack spacing={3} sx={{ p: 3, pr: 0 }}>
           {list.map((news) => (
-            <NewsItem key={news.id} news={news} />
+            <NewsItem key={news.id} news={news} onClick={() => onNewsClick(news)} />
           ))}
         </Stack>
       </Scrollbar>
@@ -48,15 +46,16 @@ AppNewsUpdate.propTypes = {
   title: PropTypes.string,
   subheader: PropTypes.string,
   list: PropTypes.array.isRequired,
+  onNewsClick: PropTypes.func.isRequired,
 };
 
 // ----------------------------------------------------------------------
 
-function NewsItem({ news }) {
+function NewsItem({ news, onClick }) {
   const { image, title, description, postedAt } = news;
 
   return (
-    <Stack direction="row" alignItems="center" spacing={2}>
+    <Stack direction="row" alignItems="center" spacing={2} onClick={onClick}>
       <Box
         component="img"
         alt={title}
@@ -87,5 +86,6 @@ NewsItem.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     postedAt: PropTypes.instanceOf(Date),
-  }),
+  }).isRequired,
+  onClick: PropTypes.func.isRequired,
 };

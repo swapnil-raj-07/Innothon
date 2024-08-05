@@ -10,7 +10,7 @@ import Chart, { useChart } from 'src/components/chart';
 
 // ----------------------------------------------------------------------
 
-export default function AppConversionRates({ title, subheader, chart, ...other }) {
+export default function AppConversionRates({  title, subheader, chart, ...other }) {
   const { colors, series, options } = chart;
 
   const chartSeries = series.map((i) => i.value);
@@ -45,7 +45,7 @@ export default function AppConversionRates({ title, subheader, chart, ...other }
 
       <Box sx={{ mx: 3 }}>
         <Chart
-          dir="ltr"
+          dir = "ltr"
           type="bar"
           series={[{ data: chartSeries }]}
           options={chartOptions}
