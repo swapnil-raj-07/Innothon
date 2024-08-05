@@ -1,6 +1,5 @@
-import {useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from "axios";
 
 import Box from '@mui/material/Box';
 
@@ -10,28 +9,34 @@ import Nav from './nav';
 import Main from './main';
 import Header from './header';
 
+import { useData } from '../../dataContext';
+
 // ----------------------------------------------------------------------
 
 export default function DashboardLayout({ children }) {
   const [openNav, setOpenNav] = useState(false);
+  const { dataA, loading, error } = useData();
   const [userAccount, setUserAccount] = useState(account);
 
   useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/users?id=1').then((response) => {
-      console.log('response.data',response.data[0]);
-      const X = {
-        displayName: response.data[0].name,
-        email: response.data[0].email,
+    console.log('dataA in useEffect:', dataA);
+    if (dataA) {
+      setUserAccount({
+        displayName: dataA.name,
+        email: dataA.email,
         photoURL: '/assets/images/avatars/avatar_25.jpg',
-        isAdmin: true        
-      }
-      setUserAccount(X);
-    });
-  },[]);
+        isAdmin: true  
+      });
+    }
+  }, [dataA]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-
-  
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <>

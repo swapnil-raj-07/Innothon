@@ -6,14 +6,18 @@ import { useScrollToTop } from 'src/hooks/use-scroll-to-top';
 import Router from 'src/routes/sections';
 import ThemeProvider from 'src/theme';
 
+import { DataProvider } from './dataContext';
+
 // ----------------------------------------------------------------------
 
 export default function App() {
   useScrollToTop();
 
   return (
-    <ThemeProvider>
-      <Router />
-    </ThemeProvider>
+    <DataProvider>
+      <ThemeProvider>
+        <Router />
+      </ThemeProvider>
+    </DataProvider>
   );
 }
