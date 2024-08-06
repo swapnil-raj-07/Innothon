@@ -37,14 +37,17 @@ namespace CyberEscape
         private async static void ToastNotificationManagerCompat_OnActivated(ToastNotificationActivatedEventArgsCompat e)
         {
             var args = ToastArguments.Parse(e.Argument);
+            if (args.Count < 2) return; // TODO
+
             int notificationId = int.Parse(args["notificationId"]);
             int userId = int.Parse(args["userId"]);
 
             if (args["action"] == "open")
             {
                 await Browser.UpdateNotificationToRead(notificationId, userId);
-
-                Browser.OpenLink("http://localhost:3030/");
+                
+                var requestLink = $"http://localhost:3030/user/{userId}/post/{notificationId}";
+                Browser.OpenLink(requestLink);
             }
             else if (args["action"] == "dismiss")
             {

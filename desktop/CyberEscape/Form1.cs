@@ -78,7 +78,9 @@ namespace CyberEscape
                 notifications.Clear();
 
                 string machineName = Environment.MachineName;
-                string apiUrl = "http://localhost:3000/userNotificationUnRead?userId=5CD9492J9H";
+                string userMachine = machineName.Split('-')[1];
+
+                string apiUrl = $"http://localhost:3000/userNotificationUnRead?userId={userMachine}";
 
                 HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
                 response.EnsureSuccessStatusCode();
@@ -90,7 +92,7 @@ namespace CyberEscape
 
                 var today = DateTime.Now; // Get the current date without time
                 var topNotification = notifications
-                    .Where(n => n.scheduledDate.Date <= today) // TODO - check for cancel future date
+                    .Where(n => (n.futureDate == null && n.scheduledDate.Date <= today) || (n.futureDate != null && n.futureDate.Value <= today))
                     .OrderBy(n => n.scheduledDate)
                     .LastOrDefault(); // Pick only the lastest date
 
