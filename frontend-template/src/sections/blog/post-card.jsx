@@ -14,6 +14,7 @@ import { fShortenNumber } from 'src/utils/format-number';
 import Iconify from 'src/components/iconify';
 import SvgColor from 'src/components/svg-color';
 import Label from 'src/components/label';
+import { grey } from '@mui/material/colors';
 
 // ----------------------------------------------------------------------
 
@@ -29,6 +30,7 @@ export default function PostCard({ post, index }) {
       alt={author.name}
       src={author.avatarUrl}
       sx={{
+        bgcolor: grey[900],
         zIndex: 9,
         width: 32,
         height: 32,
