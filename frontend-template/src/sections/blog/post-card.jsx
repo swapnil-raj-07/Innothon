@@ -9,12 +9,7 @@ import { alpha } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 
-import Iconify from '../../components/iconify';
-import Label from '../../components/label';
-import SvgColor from '../../components/svg-color';
 import { useData } from '../../dataContext';
-import { fShortenNumber } from '../../utils/format-number';
-import { fDate } from '../../utils/format-time';
 
 import { fDate } from 'src/utils/format-time';
 import { fShortenNumber } from 'src/utils/format-number';
