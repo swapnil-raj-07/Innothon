@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #0f6c83 10%, #0a4568 100%);
+  color: #fff;
+  position: relative;
+}
+
+/* Header styles */
+.header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Points container */
+.points-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  margin-right: 10px;
+}
+
+/* Logo styles */
+.logo {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+/* Points box styles */
+.points-box {
+  font-size: 1.5rem;
+  background: rgba(48, 160, 175, 0.74);
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Parent container for all sections */
+.parent-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Centered container */
+.container {
+  background: rgba(255, 255, 255, 0);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px 0 rgba(19, 167, 172, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(153, 22, 22, 0);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  height: auto; /* Height adjusts based on content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden; /* Hide overflow when collapsed */
+  transition: box-shadow 0.3s ease, transform 0.3s ease, max-height 0.5s ease;
+}
+
+/* Title styles */
+.container h1.unread {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff4d4d; /* Red for Unread Notifications */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.container h1.opened {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffeb3b; /* Yellow for Opened Notifications */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.container h1.acknowledged {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #4caf50; /* Green for Acknowledged Notifications */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Quote text */
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Arrow navigation */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: #60aac0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.arrow:hover {
+  color: #2dd8d8;
+}
+
+.arrow-left {
+  left: -40px;
+}
+
+.arrow-right {
+  right: -40px;
+}
+
+/* Glow effect for notifications */
+.container:hover {
+  box-shadow: 0 12px 40px rgba(19, 167, 172, 0.7);
+  transform: scale(1.05);
+}
+
+/* Hide text from screen readers */
+.hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+/* Expand and collapse animations for containers */
+.container.expanded {
+  max-height: 600px; /* Adjust the max-height to fit your content */
+}
+
+.container.collapsed {
+  max-height: 200px; /* Height when collapsed */
+}
+
+/* Show All Box Styles */
+.show-all-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.show-all-box:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.02);
+}
+
+.show-all-box.expanded {
+  max-height: 300px; /* Adjust based on content */
+  overflow: auto;
+  transition: max-height 0.5s ease;
+}
+
+.show-all-box.collapsed {
+  max-height: 30px; /* Height when collapsed */
+  overflow: hidden;
+}
+
+/* Arrow for Show All Box */
+.show-all-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: #60aac0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.show-all-arrow:hover {
+  color: #2dd8d8;
+}

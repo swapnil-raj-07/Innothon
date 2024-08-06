@@ -1,11 +1,12 @@
 import express from 'express';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
-
+import cors from 'cors';
 
 const app = express();
 const dbName = './innothon.db';
 
+app.use(cors());
 app.use(express.json());
 
 // Open SQLite database
@@ -181,75 +182,52 @@ app.post('/user', async (req, res) => {
 
 // Create an endpoint to store notification data
 app.post('/notification', async (req, res) => {
+  try {
+    console.log('notification##', { req: req.body });
 
-  const { header,
-    body,
-    type,
-    groupId,
-    scheduledDate,
-    scheduledTime,
-    mode,
-    points,
-    createdDate,
-    createdBy,
-    active } = req.body;
+    const { header, body, type, groupId, scheduledDate, scheduledTime, mode, points, createdDate, createdBy, active } = req.body;
+    const imagePath = `/images/${type}.png`;
 
-  const db = await openDb();
+    // if (!header || !body || !type || !groupId || !scheduledDate || !scheduledTime || !mode || !points || !createdDate || !createdBy || active === undefined) {
+    //   return res.status(400).json({ error: 'Missing required fields' });
+    // }
 
-  const result = await db.run(
-    `INSERT INTO Notification ( header,
-  body,
-  type,
-  groupId,
-  scheduledDate,
-  scheduledTime,
-  mode,
-  points,
-  imagePath,
-  createdDate,
-  createdBy,
-  active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-    [header,
-      body,
-      type,
-      groupId,
-      scheduledDate,
-      scheduledTime,
-      mode,
-      points,
-      `/images/${type}.png`,
-      createdDate,
-      createdBy,
-      active]
-  );
-
-  let selectQuery = 'SELECT * FROM User';
-  if (groupId) selectQuery = `SELECT * FROM User where groupId = ${groupId}`
-  const items = await db.all(selectQuery);
-  for (const item of items) {
-    await db.run(
-      'INSERT INTO UserNotification (notificationId, userId, createdBy, active, isRead, createdDate) VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)',
-      [result.lastID, item.id, createdBy, 1, 0]
+    const db = await openDb();
+    const result = await db.run(
+      `INSERT INTO Notification (
+        header,
+        body,
+        type,
+        groupId,
+        scheduledDate,
+        scheduledTime,
+        mode,
+        points,
+        imagePath,
+        createdDate,
+        createdBy,
+        active
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [header, body, type, groupId, scheduledDate, scheduledTime, mode, points, imagePath, createdDate, createdBy, active]
     );
+
+    let selectQuery = 'SELECT * FROM User';
+    if (groupId) selectQuery = `SELECT * FROM User where groupId = ${groupId}`
+    console.log('groupId', selectQuery)
+    const items = await db.all(selectQuery);
+    for (const item of items) {
+      await db.run(
+        'INSERT INTO UserNotification (notificationId, userId, createdBy, active, isRead, createdDate) VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)',
+        [result.lastID, item.id, createdBy, 1, 0]
+      );
+    }
+    // res.status(200).json(items);
+
+    res.status(201).json({ id: result.lastID, header, body, type, groupId, scheduledDate, scheduledTime, mode, points, imagePath, createdDate, createdBy, active });
+  } catch (error) {
+    console.error('Error inserting notification:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
-  res.status(200).json(items);
-
-
-
-  res.status(201).json({
-    id: result.lastID, header,
-    body,
-    type,
-    groupId,
-    scheduledDate,
-    scheduledTime,
-    mode,
-    points,
-    immagePath: `/images/${type}.png`,
-    createdDate,
-    createdBy,
-    active
-  });
 });
 
 // Create an endpoint to store Admin data
@@ -327,7 +305,7 @@ app.get('/admin', async (req, res) => {
 // Create an endpoint to fetch all UserMessage data
 app.get('/userNotification', async (req, res) => {
   const { userId } = req.query;
-  if(!userId) res.status(400).json({message: 'userId invalid'});
+  if (!userId) res.status(400).json({ message: 'userId invalid' });
   const db = await openDb();
   const items = await db.all(`SELECT ug.groupName as groupName,
     mt.typeName as typeName,
@@ -364,7 +342,7 @@ WHERE u.hostName = ?`, [userId]);
 // Create an endpoint to fetch read UserMessage data
 app.get('/userNotificationRead', async (req, res) => {
   const { userId } = req.query;
-  if(!userId) res.status(400).json({message: 'userId invalid'});
+  if (!userId) res.status(400).json({ message: 'userId invalid' });
   const db = await openDb();
   const items = await db.all(`SELECT ug.groupName as groupName,
     mt.typeName as typeName,
@@ -401,7 +379,7 @@ WHERE u.hostName = ? AND un.isRead = 1`, [userId]);
 // Create an endpoint to fetch unread UserMessage data
 app.get('/userNotificationUnRead', async (req, res) => {
   const { userId } = req.query;
-  if(!userId) res.status(400).json({message: 'userId invalid'});
+  if (!userId) res.status(400).json({ message: 'userId invalid' });
   const db = await openDb();
   const items = await db.all(`SELECT ug.groupName as groupName,
     mt.typeName as typeName,
