@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\CyberEscape.csproj",
-        "projectName": "cyberSafe",
+        "projectName": "CyberEscape",
         "projectPath": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\CyberEscape.csproj",
         "packagesPath": "C:\\Users\\venkad2\\.nuget\\packages\\",
         "outputPath": "C:\\Hacaton\\Innothon\\desktop\\CyberEscape\\obj\\",
@@ -58,6 +58,10 @@
             "Microsoft.Windows.SDK.Contracts": {
               "target": "Package",
               "version": "[10.0.19041.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "System.Runtime.WindowsRuntime": {
               "target": "Package",
