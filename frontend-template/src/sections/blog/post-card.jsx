@@ -1,12 +1,20 @@
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
+import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
-import Avatar from '@mui/material/Avatar';
 import { alpha } from '@mui/material/styles';
-import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Unstable_Grid2';
+
+import Iconify from '../../components/iconify';
+import Label from '../../components/label';
+import SvgColor from '../../components/svg-color';
+import { useData } from '../../dataContext';
+import { fShortenNumber } from '../../utils/format-number';
+import { fDate } from '../../utils/format-time';
 
 import { fDate } from 'src/utils/format-time';
 import { fShortenNumber } from 'src/utils/format-number';
@@ -18,8 +26,17 @@ import { grey } from '@mui/material/colors';
 
 // ----------------------------------------------------------------------
 
-export default function PostCard({ post, index }) {
-  const { cover, title, isRead,  author, createdAt, pointer } = post;
+export default function PostCard({ post, index, isDetailView = false }) {
+  const { cover, title, desc, isRead, author, createdAt, pointer } = post;
+  const navigate = useNavigate();
+
+  const { user } = useData();
+
+  const handleCardClick = () => {
+    if (!isDetailView) {
+      navigate(`/user/${user.hostName}/post/${post.id}`);
+    }
+  };
 
   const latestPostLarge = index === 0 || index === 1;
 
@@ -59,12 +76,26 @@ export default function PostCard({ post, index }) {
         display: '-webkit-box',
         WebkitBoxOrient: 'vertical',
         ...(latestPostLarge && { typography: 'h5', height: 60 }),
-        ...((latestPostLarge || latestPost) && {
+        ...((latestPostLarge || latestPost || isDetailView) && {
           color: 'common.white',
         }),
       }}
     >
       {title}
+    </Typography>
+  );
+
+  const renderDesc = isDetailView && (
+    <Typography
+      color="inherit"
+      variant="body1"
+      sx={{
+        mt: 2,
+        color: 'common.white',
+        zIndex: 10,
+      }}
+    >
+      {desc}
     </Typography>
   );
 
@@ -80,8 +111,6 @@ export default function PostCard({ post, index }) {
       }}
     >
       {[
-        // { number: comment, icon: 'eva:message-circle-fill' },
-        // { number: view, icon: 'eva:eye-fill' },
         { number: Number(pointer) / 2, icon: 'eva:clock-fill' },
         { number: pointer, icon: 'eva:award-fill' },
       ].map((info, _index) => (
@@ -89,7 +118,7 @@ export default function PostCard({ post, index }) {
           key={_index}
           direction="row"
           sx={{
-            ...((latestPostLarge || latestPost) && {
+            ...((latestPostLarge || latestPost || isDetailView) && {
               opacity: 0.48,
               color: 'common.white',
             }),
@@ -124,7 +153,7 @@ export default function PostCard({ post, index }) {
       sx={{
         mb: 2,
         color: 'text.disabled',
-        ...((latestPostLarge || latestPost) && {
+        ...((latestPostLarge || latestPost || isDetailView) && {
           opacity: 0.48,
           color: 'common.white',
         }),
@@ -152,18 +181,17 @@ export default function PostCard({ post, index }) {
 
   return (
     <Grid xs={12} sm={latestPostLarge ? 12 : 6} md={latestPostLarge ? 6 : 3}>
-      <Card>
+      <Card onClick={handleCardClick} style={{ cursor: isDetailView ? 'default' : 'pointer' }}>
         <Label
           variant="filled"
           color="error"
-          
           sx={{
             zIndex: 9,
             top: 16,
             right: 16,
             position: 'absolute',
             textTransform: 'uppercase',
-            display: isRead ? 'none' :'inline-flex'
+            display: isRead ? 'none' : 'inline-flex',
           }}
         >
           unread
@@ -171,9 +199,9 @@ export default function PostCard({ post, index }) {
         <Box
           sx={{
             position: 'relative',
-            pt: 'calc(100% * 3 / 4)',
-            ...((latestPostLarge || latestPost) && {
-              pt: 'calc(100% * 4 / 3)',
+            pt: isDetailView ? 'calc(100% * 2 / 3)' : 'calc(100% * 3 / 4)',
+            ...((latestPostLarge || latestPost || isDetailView) && {
+              pt: isDetailView ? 'calc(100% * 3 / 2)' : 'calc(100% * 4 / 3)',
               '&:after': {
                 top: 0,
                 content: "''",
@@ -201,7 +229,7 @@ export default function PostCard({ post, index }) {
         <Box
           sx={{
             p: (theme) => theme.spacing(4, 3, 3, 3),
-            ...((latestPostLarge || latestPost) && {
+            ...((latestPostLarge || latestPost || isDetailView) && {
               width: 1,
               bottom: 0,
               position: 'absolute',
@@ -211,6 +239,8 @@ export default function PostCard({ post, index }) {
           {renderDate}
 
           {renderTitle}
+
+          {renderDesc}
 
           {renderInfo}
         </Box>
@@ -222,4 +252,5 @@ export default function PostCard({ post, index }) {
 PostCard.propTypes = {
   post: PropTypes.object.isRequired,
   index: PropTypes.number,
+  isDetailView: PropTypes.bool,
 };
