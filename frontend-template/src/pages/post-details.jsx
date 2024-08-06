@@ -16,6 +16,7 @@ const PostDetail = () => {
   useEffect(() => {
     if (userNotifications) {
       const foundPost = userNotifications.find((p) => p.id.toString() === id.toString());
+      console.log('foundPost', {foundPost})
       setPost(foundPost);
     }
   }, [id, userNotifications]);
@@ -23,7 +24,7 @@ const PostDetail = () => {
   const handleMarkAsRead = async () => {
     if (post) {
       try {
-        await putData(`/userNotification?notificationId=${post.id}&userId=${user.id}`, {
+        await putData(`userNotification?notificationId=${post.id}&userId=${user.id}`, {
           isRead: 1,
         });
         navigate(`/user`);
@@ -77,9 +78,9 @@ const PostDetail = () => {
         </Typography>
         <Button
           variant="contained"
-          color="success"
+          color="secondary"
           onClick={handleMarkAsRead}
-          disabled={post.isRead}
+          disabled={post.isRead==='1'}
         >
           {post.isRead ? 'Read' : 'Mark as Read'}
         </Button>

@@ -29,7 +29,7 @@ export default function PostCard({ post, index, isDetailView = false }) {
 
   const handleCardClick = () => {
     if (!isDetailView) {
-      navigate(`/user/${user.hostName}/post/${post.id}`);
+      navigate(`/user/${user.id}/post/${post.id}`);
     }
   };
 
