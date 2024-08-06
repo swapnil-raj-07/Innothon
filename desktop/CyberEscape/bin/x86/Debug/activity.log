@@ -113,3 +113,38 @@
 8/6/2024 2:00:17 PM: No new User notification found
 8/6/2024 2:00:37 PM: No new User notification found
 8/6/2024 2:00:57 PM: No new User notification found
+8/6/2024 2:18:32 PM: No new User notification found
+8/6/2024 2:18:52 PM: No new User notification found
+8/6/2024 2:19:12 PM: No new User notification found
+8/6/2024 2:19:32 PM: No new User notification found
+8/6/2024 2:19:52 PM: No new User notification found
+8/6/2024 2:20:12 PM: No new User notification found
+8/6/2024 2:20:32 PM: No new User notification found
+8/6/2024 2:20:52 PM: No new User notification found
+8/6/2024 2:21:12 PM: No new User notification found
+8/6/2024 2:21:32 PM: No new User notification found
+8/6/2024 2:21:52 PM: No new User notification found
+8/6/2024 2:22:12 PM: No new User notification found
+8/6/2024 2:22:32 PM: No new User notification found
+8/6/2024 2:22:52 PM: No new User notification found
+8/6/2024 2:23:12 PM: No new User notification found
+8/6/2024 2:23:32 PM: No new User notification found
+8/6/2024 2:23:52 PM: No new User notification found
+8/6/2024 2:24:12 PM: No new User notification found
+8/6/2024 2:24:32 PM: No new User notification found
+8/6/2024 2:24:52 PM: No new User notification found
+8/6/2024 2:25:21 PM: No new User notification found
+8/6/2024 2:25:41 PM: No new User notification found
+8/6/2024 2:26:01 PM: No new User notification found
+8/6/2024 2:26:21 PM: No new User notification found
+8/6/2024 2:26:41 PM: Error converting value {null} to type 'System.DateTime'. Path '[0].futureDate', line 1, position 602.
+8/6/2024 2:27:01 PM: Error converting value {null} to type 'System.DateTime'. Path '[0].futureDate', line 1, position 602.
+8/6/2024 2:31:18 PM: Showing notification for messag ${"hostName":"5CD9492J9H","header":"Enable Multi-Factor Authentication (MFA)","body":"Add an extra layer of security by requiring a second form of verification beyond just a password.","imagePath":"/images/1.png","notificationId":18,"scheduledDate":"2024-08-06T13:26:00","futureDate":null,"scheduledTime":"13:26","points":10000,"userId":1}
+8/6/2024 2:31:38 PM: Showing notification for messag ${"hostName":"5CD9492J9H","header":"Enable Multi-Factor Authentication (MFA)","body":"Add an extra layer of security by requiring a second form of verification beyond just a password.","imagePath":"/images/1.png","notificationId":18,"scheduledDate":"2024-08-06T13:26:00","futureDate":null,"scheduledTime":"13:26","points":10000,"userId":1}
+8/6/2024 2:32:38 PM: Showing notification for messag ${"hostName":"5CD9492J9H","header":"Enable Multi-Factor Authentication (MFA)","body":"Add an extra layer of security by requiring a second form of verification beyond just a password.","imagePath":"/images/1.png","notificationId":19,"scheduledDate":"2024-08-06T14:28:00","futureDate":null,"scheduledTime":"14:28","points":1000,"userId":1}
+8/6/2024 2:32:58 PM: Showing notification for messag ${"hostName":"5CD9492J9H","header":"Enable Multi-Factor Authentication (MFA)","body":"Add an extra layer of security by requiring a second form of verification beyond just a password.","imagePath":"/images/1.png","notificationId":19,"scheduledDate":"2024-08-06T14:28:00","futureDate":null,"scheduledTime":"14:28","points":1000,"userId":1}
+8/6/2024 2:33:18 PM: Showing notification for messag ${"hostName":"5CD9492J9H","header":"Enable Multi-Factor Authentication (MFA)","body":"Add an extra layer of security by requiring a second form of verification beyond just a password.","imagePath":"/images/1.png","notificationId":19,"scheduledDate":"2024-08-06T14:28:00","futureDate":"2024-08-06T15:33:10.3898521+05:30","scheduledTime":"14:28","points":1000,"userId":1}
+8/6/2024 2:33:38 PM: Showing notification for messag ${"hostName":"5CD9492J9H","header":"Enable Multi-Factor Authentication (MFA)","body":"Add an extra layer of security by requiring a second form of verification beyond just a password.","imagePath":"/images/1.png","notificationId":19,"scheduledDate":"2024-08-06T14:28:00","futureDate":"2024-08-06T15:33:10.3898521+05:30","scheduledTime":"14:28","points":1000,"userId":1}
+8/6/2024 2:35:38 PM: Showing notification for messag ${"hostName":"5CD9492J9H","header":"Secure Your Devices","body":"Use screen locks, strong passwords, and encryption to protect laptops and mobile devices.\nImplement automatic device locking when not in use.","imagePath":"/images/4.png","notificationId":20,"scheduledDate":"2024-08-06T14:31:00","futureDate":null,"scheduledTime":"14:31","points":100,"userId":1}
+8/6/2024 2:36:38 PM: Showing notification for messag ${"hostName":"5CD9492J9H","header":"Backup Data Regularly","body":"Regularly backup important data to an external drive or cloud service to prevent data loss in case of an incident","imagePath":"/images/3.png","notificationId":21,"scheduledDate":"2024-08-06T14:34:00","futureDate":null,"scheduledTime":"14:34","points":1000,"userId":1}
+8/6/2024 2:36:58 PM: Showing notification for messag ${"hostName":"5CD9492J9H","header":"Backup Data Regularly","body":"Regularly backup important data to an external drive or cloud service to prevent data loss in case of an incident","imagePath":"/images/3.png","notificationId":21,"scheduledDate":"2024-08-06T14:34:00","futureDate":null,"scheduledTime":"14:34","points":1000,"userId":1}

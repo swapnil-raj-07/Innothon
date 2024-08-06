@@ -15,6 +15,8 @@ namespace CyberEscape
 
         public int notificationId {  get; set; }
         public DateTime scheduledDate { get; set; }
+        public DateTime? futureDate { get; set; }
+
         public string scheduledTime { get; set; }
         public int points { get; set; }
         public int userId { get; set; }
