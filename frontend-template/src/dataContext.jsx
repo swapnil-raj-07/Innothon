@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 const DataContext = createContext();
 const BASE_URL = 'http://localhost:3000';
@@ -24,9 +24,9 @@ export const DataProvider = ({ children }) => {
         setUser(resultA[0]);
 
         // Use resultA to make the second API call
-        const userId = resultA[0].hostName; 
+        const userId = resultA[0].hostName;
         const responseB = await fetch(`${BASE_URL}/userNotification?userId=${userId}`);
-        
+
         const resultB = await responseB.json();
         console.log('Fetched userNotification:', resultB);
 
@@ -81,15 +81,17 @@ export const DataProvider = ({ children }) => {
       throw err;
     } finally {
       setLoading(false);
-      console.log('calling setUpdateRecord')
+      console.log('calling setUpdateRecord');
       setUpdateRecord(updateRecord + 1);
     }
   };
 
-  const putData = async (url, data) => {
+  const putData = async (endpoint, data) => {
     setLoading(true);
     try {
-      const response = await fetch(url, {
+      console.log('base url', `${BASE_URL}/${endpoint}`);
+      console.log('body', JSON.stringify(data));
+      const response = await fetch(`${BASE_URL}/${endpoint}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -104,6 +106,8 @@ export const DataProvider = ({ children }) => {
       throw err;
     } finally {
       setLoading(false);
+      console.log('calling setUpdateRecord');
+      setUpdateRecord(updateRecord + 1);
     }
   };
 
