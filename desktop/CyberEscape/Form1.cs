@@ -86,9 +86,11 @@ namespace CyberEscape
                 string responseBody = await response.Content.ReadAsStringAsync();
                 notifications = JsonConvert.DeserializeObject<List<UserNotification>>(responseBody);
 
+                if (notifications.Count == 0) return;
+
                 var today = DateTime.Now; // Get the current date without time
                 var topNotification = notifications
-                    .Where(n => n.scheduledDate.Date <= today)
+                    .Where(n => n.scheduledDate.Date <= today) // TODO - check for cancel future date
                     .OrderBy(n => n.scheduledDate)
                     .LastOrDefault(); // Pick only the lastest date
 

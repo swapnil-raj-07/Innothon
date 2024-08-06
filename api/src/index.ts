@@ -1,10 +1,10 @@
-import express from 'express';
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
-import cors from 'cors';
+import express from "express";
+import sqlite3 from "sqlite3";
+import { open } from "sqlite";
+import cors from "cors";
 
 const app = express();
-const dbName = './innothon.db';
+const dbName = "./innothon.db";
 
 app.use(cors());
 app.use(express.json());
@@ -13,7 +13,7 @@ app.use(express.json());
 const openDb = async () => {
   return open({
     filename: dbName,
-    driver: sqlite3.Database
+    driver: sqlite3.Database,
   });
 };
 
@@ -30,8 +30,8 @@ const openDb = async () => {
     isActive INTEGER NOT NULL DEFAULT 1
   );
 
-  CREATE INDEX IF NOT EXISTS idx_groupname ON UserGroups(groupName);  
-  
+  CREATE INDEX IF NOT EXISTS idx_groupname ON UserGroups(groupName);
+
   `);
 
   //Create message type table
@@ -43,8 +43,8 @@ const openDb = async () => {
     isActive INTEGER NOT NULL DEFAULT 1
   );
 
-  CREATE INDEX IF NOT EXISTS idx_typeName ON MessageType(typeName);  
-  
+  CREATE INDEX IF NOT EXISTS idx_typeName ON MessageType(typeName);
+
   `);
 
   //Create message mode table
@@ -56,8 +56,8 @@ const openDb = async () => {
     isActive INTEGER NOT NULL DEFAULT 1
   );
 
-  CREATE INDEX IF NOT EXISTS idx_typeName ON MessageMode(modeName);  
-  
+  CREATE INDEX IF NOT EXISTS idx_typeName ON MessageMode(modeName);
+
   `);
 
   //Create user table
@@ -74,8 +74,8 @@ const openDb = async () => {
     isActive INTEGER NOT NULL DEFAULT 1
   );
 
-  CREATE INDEX IF NOT EXISTS idx_hostname ON User(hostName);  
-  
+  CREATE INDEX IF NOT EXISTS idx_hostname ON User(hostName);
+
   `);
 
   //Create Notification table
@@ -95,7 +95,7 @@ const openDb = async () => {
     active INTEGER NOT NULL
   );
 
-   CREATE INDEX IF NOT EXISTS idx_header ON Notification(header); 
+   CREATE INDEX IF NOT EXISTS idx_header ON Notification(header);
   `);
 
   //Create admin table
@@ -107,7 +107,7 @@ const openDb = async () => {
     password TEXT NOT NULL,
     active INTEGER NOT NULL
   );
-  CREATE INDEX IF NOT EXISTS idx_emailId ON Admin(emailId); 
+  CREATE INDEX IF NOT EXISTS idx_emailId ON Admin(emailId);
   `);
 
   //Create User notification table
@@ -116,11 +116,12 @@ const openDb = async () => {
     notificationId	INTEGER NOT NULL,
     userId 	INTEGER NOT NULL,
     isRead INTEGER NOT NULL,
+    futureDate TEXT NULL,
     createdDate TEXT NOT NULL,
     createdBy INTEGER NOT NULL,
     active INTEGER NOT NULL
   );
-  CREATE INDEX IF NOT EXISTS idx_notificationId_userId ON UserNotification(notificationId,userId); 
+  CREATE INDEX IF NOT EXISTS idx_notificationId_userId ON UserNotification(notificationId,userId);
   `);
 
   //Create UserNotificationHistory table
@@ -129,63 +130,110 @@ const openDb = async () => {
     userNotificationId	 INTEGER NOT NULL,
     sentDate TEXT NOT NULL
   );
-  
+
   CREATE INDEX IF NOT EXISTS idx_userNotificationId ON UserNotificationHistory(userNotificationId);
   `);
 })();
 
 // Create an endpoint to store userGroups data
-app.post('/userGroups', async (req, res) => {
+app.post("/userGroups", async (req, res) => {
   const { groupName, createdDate, createdBy, isActive } = req.body;
   const db = await openDb();
   const result = await db.run(
-    'INSERT INTO UserGroups (groupName, createdDate, createdBy, isActive) VALUES (?, ?, ?, ?)',
+    "INSERT INTO UserGroups (groupName, createdDate, createdBy, isActive) VALUES (?, ?, ?, ?)",
     [groupName, createdDate, createdBy, isActive]
   );
-  res.status(201).json({ id: result.lastID, groupName, createdDate, createdBy, isActive });
+  res
+    .status(201)
+    .json({ id: result.lastID, groupName, createdDate, createdBy, isActive });
 });
 
 // Create an endpoint to store messageType data
-app.post('/messageType', async (req, res) => {
-
+app.post("/messageType", async (req, res) => {
   const { typeName, createdDate, createdBy, isActive } = req.body;
   const db = await openDb();
   const result = await db.run(
-    'INSERT INTO MessageType (typeName, createdDate, createdBy, isActive) VALUES (?, ?, ?, ?)',
+    "INSERT INTO MessageType (typeName, createdDate, createdBy, isActive) VALUES (?, ?, ?, ?)",
     [typeName, createdDate, createdBy, isActive]
   );
-  res.status(201).json({ id: result.lastID, typeName, createdDate, createdBy, isActive });
+  res
+    .status(201)
+    .json({ id: result.lastID, typeName, createdDate, createdBy, isActive });
 });
 
 // Create an endpoint to store messageMode data
-app.post('/messageMode', async (req, res) => {
+app.post("/messageMode", async (req, res) => {
   const { modeName, createdDate, createdBy, isActive } = req.body;
   const db = await openDb();
   const result = await db.run(
-    'INSERT INTO MessageMode (modeName, createdDate, createdBy, isActive) VALUES (?, ?, ?, ?)',
+    "INSERT INTO MessageMode (modeName, createdDate, createdBy, isActive) VALUES (?, ?, ?, ?)",
     [modeName, createdDate, createdBy, isActive]
   );
-  res.status(201).json({ id: result.lastID, modeName, createdDate, createdBy, isActive });
+  res
+    .status(201)
+    .json({ id: result.lastID, modeName, createdDate, createdBy, isActive });
 });
 
 // Create an endpoint to store user data
-app.post('/user', async (req, res) => {
-
-  const { hostName, firstName, lastName, emailId, password, groupId, createdDate, createdBy, isActive } = req.body;
+app.post("/user", async (req, res) => {
+  const {
+    hostName,
+    firstName,
+    lastName,
+    emailId,
+    password,
+    groupId,
+    createdDate,
+    createdBy,
+    isActive,
+  } = req.body;
   const db = await openDb();
   const result = await db.run(
-    'INSERT INTO User (hostName, firstName,  lastName,  emailId,  password,  groupId, createdDate, createdBy, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-    [hostName, firstName, lastName, emailId, password, groupId, createdDate, createdBy, isActive]
+    "INSERT INTO User (hostName, firstName,  lastName,  emailId,  password,  groupId, createdDate, createdBy, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    [
+      hostName,
+      firstName,
+      lastName,
+      emailId,
+      password,
+      groupId,
+      createdDate,
+      createdBy,
+      isActive,
+    ]
   );
-  res.status(201).json({ id: result.lastID, hostName, firstName, lastName, emailId, password, groupId, createdDate, createdBy, isActive });
+  res.status(201).json({
+    id: result.lastID,
+    hostName,
+    firstName,
+    lastName,
+    emailId,
+    password,
+    groupId,
+    createdDate,
+    createdBy,
+    isActive,
+  });
 });
 
 // Create an endpoint to store notification data
-app.post('/notification', async (req, res) => {
+app.post("/notification", async (req, res) => {
   try {
-    console.log('notification##', { req: req.body });
+    console.log("notification##", { req: req.body });
 
-    const { header, body, type, groupId, scheduledDate, scheduledTime, mode, points, createdDate, createdBy, active } = req.body;
+    const {
+      header,
+      body,
+      type,
+      groupId,
+      scheduledDate,
+      scheduledTime,
+      mode,
+      points,
+      createdDate,
+      createdBy,
+      active,
+    } = req.body;
     const imagePath = `/images/${type}.png`;
 
     // if (!header || !body || !type || !groupId || !scheduledDate || !scheduledTime || !mode || !points || !createdDate || !createdBy || active === undefined) {
@@ -208,106 +256,144 @@ app.post('/notification', async (req, res) => {
         createdBy,
         active
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [header, body, type, groupId, scheduledDate, scheduledTime, mode, points, imagePath, createdDate, createdBy, active]
+      [
+        header,
+        body,
+        type,
+        groupId,
+        scheduledDate,
+        scheduledTime,
+        mode,
+        points,
+        imagePath,
+        createdDate,
+        createdBy,
+        active,
+      ]
     );
 
-    let selectQuery = 'SELECT * FROM User';
-    if (groupId) selectQuery = `SELECT * FROM User where groupId = ${groupId}`
-    console.log('groupId', selectQuery)
+    let selectQuery = "SELECT * FROM User";
+    if (groupId) selectQuery = `SELECT * FROM User where groupId = ${groupId}`;
+    console.log("groupId", selectQuery);
     const items = await db.all(selectQuery);
     for (const item of items) {
       await db.run(
-        'INSERT INTO UserNotification (notificationId, userId, createdBy, active, isRead, createdDate) VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)',
+        "INSERT INTO UserNotification (notificationId, userId, createdBy, active, isRead, createdDate) VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)",
         [result.lastID, item.id, createdBy, 1, 0]
       );
     }
     // res.status(200).json(items);
 
-    res.status(201).json({ id: result.lastID, header, body, type, groupId, scheduledDate, scheduledTime, mode, points, imagePath, createdDate, createdBy, active });
+    res.status(201).json({
+      id: result.lastID,
+      header,
+      body,
+      type,
+      groupId,
+      scheduledDate,
+      scheduledTime,
+      mode,
+      points,
+      imagePath,
+      createdDate,
+      createdBy,
+      active,
+    });
   } catch (error) {
-    console.error('Error inserting notification:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Error inserting notification:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
 // Create an endpoint to store Admin data
-app.post('/admin', async (req, res) => {
+app.post("/admin", async (req, res) => {
   const { firstName, lastName, emailId, active, password } = req.body;
   const db = await openDb();
 
   const result = await db.run(
-    'INSERT INTO Admin (firstName, lastName, emailId, active, password) VALUES (?, ?, ?, ?, ?)',
+    "INSERT INTO Admin (firstName, lastName, emailId, active, password) VALUES (?, ?, ?, ?, ?)",
     [firstName, lastName, emailId, active, password]
   );
-  res.status(201).json({ id: result.lastID, firstName, lastName, emailId, active, password });
+  res.status(201).json({
+    id: result.lastID,
+    firstName,
+    lastName,
+    emailId,
+    active,
+    password,
+  });
 });
 
 // Create an endpoint to store userNotification data
-app.post('/userNotification', async (req, res) => {
-  const { notificationId, userId, createdDate, createdBy, active, isRead } = req.body;
+app.post("/userNotification", async (req, res) => {
+  const { notificationId, userId, createdDate, createdBy, active, isRead } =
+    req.body;
 
   const db = await openDb();
   const result = await db.run(
-    'INSERT INTO UserNotification (notificationId, userId, createdDate, createdBy, active, isRead) VALUES (?, ?, ?, ?, ?, ?)',
+    "INSERT INTO UserNotification (notificationId, userId, createdDate, createdBy, active, isRead) VALUES (?, ?, ?, ?, ?, ?)",
     [notificationId, userId, createdDate, createdBy, active, isRead]
   );
 
-  res.status(201).json({ id: result.lastID, notificationId, userId, createdDate, createdBy, active });
+  res.status(201).json({
+    id: result.lastID,
+    notificationId,
+    userId,
+    createdDate,
+    createdBy,
+    active,
+  });
 });
-
 
 // Create an endpoint to fetch UserGroups data
-app.get('/userGroups', async (req, res) => {
+app.get("/userGroups", async (req, res) => {
   const db = await openDb();
-  const items = await db.all('SELECT * FROM UserGroups');
+  const items = await db.all("SELECT * FROM UserGroups");
   res.status(200).json(items);
 });
-
 
 // Create an endpoint to fetch MessageType data
-app.get('/messageType', async (req, res) => {
+app.get("/messageType", async (req, res) => {
   const db = await openDb();
-  const items = await db.all('SELECT * FROM MessageType');
+  const items = await db.all("SELECT * FROM MessageType");
   res.status(200).json(items);
 });
-
 
 // Create an endpoint to fetch MessageMode data
-app.get('/messageMode', async (req, res) => {
+app.get("/messageMode", async (req, res) => {
   const db = await openDb();
-  const items = await db.all('SELECT * FROM MessageMode');
+  const items = await db.all("SELECT * FROM MessageMode");
   res.status(200).json(items);
 });
-
 
 // Create an endpoint to fetch user data
-app.get('/user', async (req, res) => {
+app.get("/user", async (req, res) => {
   const db = await openDb();
-  const items = await db.all('SELECT * FROM User');
+  const items = await db.all("SELECT * FROM User");
   res.status(200).json(items);
 });
 
-
 // Create an endpoint to fetch Notification data
-app.get('/notification', async (req, res) => {
+app.get("/notification", async (req, res) => {
   const db = await openDb();
-  const items = await db.all('SELECT * FROM Notification');
+  const items = await db.all("SELECT * FROM Notification");
   res.status(200).json(items);
 });
 
 // Create an endpoint to fetch admin data
-app.get('/admin', async (req, res) => {
+app.get("/admin", async (req, res) => {
   const db = await openDb();
-  const items = await db.all('SELECT * FROM Admin');
+  const items = await db.all("SELECT * FROM Admin");
   res.status(200).json(items);
 });
 
 // Create an endpoint to fetch all UserMessage data
-app.get('/userNotification', async (req, res) => {
+app.get("/userNotification", async (req, res) => {
   const { userId } = req.query;
-  if (!userId) res.status(400).json({ message: 'userId invalid' });
+  if (!userId) res.status(400).json({ message: "userId invalid" });
   const db = await openDb();
-  const items = await db.all(`SELECT ug.groupName as groupName,
+  const items = await db.all(
+    `SELECT ug.groupName as groupName,
     mt.typeName as typeName,
     mm.modeName as modeName,
     u.hostName as hostName,
@@ -328,23 +414,27 @@ app.get('/userNotification', async (req, res) => {
     un.isRead as isRead,
     un.createdDate as createdDate,
     un.createdBy as createdBy,
-    un.active as active
+    un.active as active,
+    un.futureDate as futureDate
 	FROM UserNotification un
 INNER JOIN Notification n ON un.notificationId = n.id
 INNER JOIN User u ON u.id = un.userId
 INNER JOIN UserGroups ug ON u.groupId = ug.id
 INNER JOIN MessageType mt ON mt.id = n.type
 INNER JOIN MessageMode mm ON mm.id = n.mode
-WHERE u.hostName = ?`, [userId]);
+WHERE u.hostName = ?`,
+    [userId]
+  );
   res.status(200).json(items);
 });
 
 // Create an endpoint to fetch read UserMessage data
-app.get('/userNotificationRead', async (req, res) => {
+app.get("/userNotificationRead", async (req, res) => {
   const { userId } = req.query;
-  if (!userId) res.status(400).json({ message: 'userId invalid' });
+  if (!userId) res.status(400).json({ message: "userId invalid" });
   const db = await openDb();
-  const items = await db.all(`SELECT ug.groupName as groupName,
+  const items = await db.all(
+    `SELECT ug.groupName as groupName,
     mt.typeName as typeName,
     mm.modeName as modeName,
     u.hostName as hostName,
@@ -365,23 +455,27 @@ app.get('/userNotificationRead', async (req, res) => {
     un.isRead as isRead,
     un.createdDate as createdDate,
     un.createdBy as createdBy,
-    un.active as active
+    un.active as active,
+    un.futureDate as futureDate
 	FROM UserNotification un
 INNER JOIN Notification n ON un.notificationId = n.id
 INNER JOIN User u ON u.id = un.userId
 INNER JOIN UserGroups ug ON u.groupId = ug.id
 INNER JOIN MessageType mt ON mt.id = n.type
 INNER JOIN MessageMode mm ON mm.id = n.mode
-WHERE u.hostName = ? AND un.isRead = 1`, [userId]);
+WHERE u.hostName = ? AND un.isRead = 1`,
+    [userId]
+  );
   res.status(200).json(items);
 });
 
 // Create an endpoint to fetch unread UserMessage data
-app.get('/userNotificationUnRead', async (req, res) => {
+app.get("/userNotificationUnRead", async (req, res) => {
   const { userId } = req.query;
-  if (!userId) res.status(400).json({ message: 'userId invalid' });
+  if (!userId) res.status(400).json({ message: "userId invalid" });
   const db = await openDb();
-  const items = await db.all(`SELECT ug.groupName as groupName,
+  const items = await db.all(
+    `SELECT ug.groupName as groupName,
     mt.typeName as typeName,
     mm.modeName as modeName,
     u.hostName as hostName,
@@ -402,19 +496,22 @@ app.get('/userNotificationUnRead', async (req, res) => {
     un.isRead as isRead,
     un.createdDate as createdDate,
     un.createdBy as createdBy,
-    un.active as active
+    un.active as active,
+    un.futureDate as futureDate
 	FROM UserNotification un
 INNER JOIN Notification n ON un.notificationId = n.id
 INNER JOIN User u ON u.id = un.userId
 INNER JOIN UserGroups ug ON u.groupId = ug.id
 INNER JOIN MessageType mt ON mt.id = n.type
 INNER JOIN MessageMode mm ON mm.id = n.mode
-WHERE u.hostName = ? AND un.isRead = 0`, [userId]);
+WHERE u.hostName = ? AND un.isRead = 0`,
+    [userId]
+  );
   res.status(200).json(items);
 });
 
 // Create an endpoint to fetch unread UserMessage data
-app.get('/userNotificationAll', async (req, res) => {
+app.get("/userNotificationAll", async (req, res) => {
   const db = await openDb();
   const items = await db.all(`SELECT ug.groupName as groupName,
     mt.typeName as typeName,
@@ -448,36 +545,42 @@ INNER JOIN MessageMode mm ON mm.id = n.mode`);
 });
 
 //Put requests
-app.put('/userNotification', async (req, res) => {
+app.put("/userNotification", async (req, res) => {
   const { notificationId, userId } = req.query;
-  const { isRead } = req.body;
+  const { isRead, futureDate } = req.body;
 
-  if (!notificationId || !userId) {
-    return res.status(400).json({ error: 'Both notificationId and userId are required' });
+  if (!notificationId || !userId || !futureDate) {
+    return res
+      .status(400)
+      .json({ error: "Both notificationId and userId are required" });
   }
 
   if (isRead === undefined) {
-    return res.status(400).json({ error: 'The isRead field is required' });
+    return res.status(400).json({ error: "The isRead field is required" });
   }
 
   const db = await openDb();
   const result = await db.run(
-    'UPDATE UserNotification SET isRead = ? WHERE notificationId = ? AND userId = ?',
-    [isRead, notificationId, userId]
+    "UPDATE UserNotification SET isRead = ?, futureDate = ? WHERE notificationId = ? AND userId = ?",
+    [isRead, futureDate, notificationId, userId]
   );
 
   if (result.changes === 0) {
-    return res.status(404).json({ error: 'Notification not found for the given user' });
+    return res
+      .status(404)
+      .json({ error: "Notification not found for the given user" });
   }
 
-  res.status(200).json({ message: 'Notification updated successfully', notificationId, userId, isRead });
+  res.status(200).json({
+    message: "Notification updated successfully",
+    notificationId,
+    userId,
+    isRead,
+  });
 });
 
-
-
-
-app.use(express.static('public'));
-app.use('/images', express.static('images'));
+app.use(express.static("public"));
+app.use("/images", express.static("images"));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

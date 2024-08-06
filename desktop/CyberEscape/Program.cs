@@ -48,7 +48,7 @@ namespace CyberEscape
             }
             else if (args["action"] == "dismiss")
             {
-                // TODO Update the status and work on algorithm to adjust the reward points
+                await Browser.UpdateNotificationToUnRead(notificationId, userId);
             }
         }
     }

@@ -43,5 +43,23 @@ namespace CyberEscape
             HttpResponseMessage response = await _httpClient.PutAsync(requestLink, content);
             response.EnsureSuccessStatusCode();
         }
+
+        public static async Task UpdateNotificationToUnRead(int notificationId, int userId)
+        {
+            var requestLink = $"http://localhost:3000/userNotification?notificationId={notificationId}&userId={userId}";
+
+            var readObject = new NotificationRead
+            {
+                isRead = 0,
+                futureDate = DateTime.Now.AddHours(1),
+            };
+
+            var objAsJson = JsonConvert.SerializeObject(readObject);
+            var content = new StringContent(objAsJson, Encoding.UTF8, "application/json");
+            var _httpClient = new HttpClient();
+
+            HttpResponseMessage response = await _httpClient.PutAsync(requestLink, content);
+            response.EnsureSuccessStatusCode();
+        }
     }
 }
