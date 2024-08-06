@@ -8,7 +8,7 @@ export default function UserDashboardPage() {
   return (
     <>
       <Helmet>
-        <title> User Dashboard | CyberSecurity </title>
+        <title> User Dashboard | CyberEscape </title>
       </Helmet>
 
       <UserDashboardView />

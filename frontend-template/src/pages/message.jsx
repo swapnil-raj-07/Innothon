@@ -8,7 +8,7 @@ export default function MessagePage() {
   return (
     <>
       <Helmet>
-        <title> Message | CyberSecurity </title>
+        <title> Message | CyberEscape </title>
       </Helmet>
 
       <MessageView />

@@ -8,7 +8,7 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Login | CyberSecurity </title>
+        <title> Login | CyberEscape </title>
       </Helmet>
 
       <LoginView />

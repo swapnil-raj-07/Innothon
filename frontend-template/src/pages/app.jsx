@@ -8,7 +8,7 @@ export default function AppPage() {
   return (
     <>
       <Helmet>
-        <title> CyberSecurity | Application </title>
+        <title> CyberEscape | Application </title>
       </Helmet>
 
       <AppView />
