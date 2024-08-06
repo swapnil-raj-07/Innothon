@@ -46,7 +46,7 @@ export default function MessagePage() {
       type: Number(type),
       active: true,
       groupId: group !== '0' ? Number(group) : undefined,
-      scheduledDate: publishingTime.split('T')[0],
+      scheduledDate: publishingTime,
       scheduledTime: publishingTime.split('T')[1],
       mode: Number(timing),
       points: Number(pointer),
