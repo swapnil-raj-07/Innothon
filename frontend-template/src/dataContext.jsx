@@ -179,10 +179,10 @@ export const DataProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  const postData = async (url, data) => {
+  const postData = async (endpoint, data) => {
     setLoading(true);
     try {
-      const response = await fetch(url, {
+      const response = await fetch(`${BASE_URL}/${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

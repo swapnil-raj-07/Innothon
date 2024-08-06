@@ -19,9 +19,9 @@ import Iconify from 'src/components/iconify';
 export default function MessagePage() {
   const { postData, user } = useData();
 
-  const [timing, setTiming] = React.useState('AfterLogin');
-  const [group, setGroup] = React.useState('All');
-  const [type, setType] = React.useState('password');
+  const [timing, setTiming] = React.useState('1');
+  const [group, setGroup] = React.useState('0');
+  const [type, setType] = React.useState('1');
   const [header, setHeader] = React.useState('');
   const [message, setMessage] = React.useState('');
   const [pointer, setPointer] = React.useState('');
@@ -38,34 +38,24 @@ export default function MessagePage() {
   const handleType = (event) => {
     setType(event.target.value);
   };
- 
-  const handleSend = () => {
-    console.log('Post', {
+
+  const handleSend = async () => {
+    const obj = {
       header,
       body: message,
-      type,
-      groupId: group,
+      type: Number(type),
+      active: true,
+      groupId: group !== '0' ? Number(group) : undefined,
       scheduledDate: publishingTime.split('T')[0],
       scheduledTime: publishingTime.split('T')[1],
-      mode: timing,
-      points: pointer,
-      imagePath: `/assets/images/covers/cover_1.jpg`,
+      mode: Number(timing),
+      points: Number(pointer),
       createdDate: new Date().toISOString(),
       createdBy: user.firstName,
-    });
-    postData('http://localhost:3000/notification', {
-      header,
-      body: message,
-      type,
-      groupId: group,
-      scheduledDate: publishingTime.split('T')[0],
-      scheduledTime: publishingTime.split('T')[1],
-      mode: timing,
-      points: pointer,
-      imagePath: `/assets/images/covers/cover_1.jpg`,
-      createdDate: new Date().toISOString(),
-      createdBy: user.firstName,
-    });
+    };
+
+    console.log('Post', { obj });
+    await postData('notification', obj);
   };
 
   return (
@@ -117,10 +107,10 @@ export default function MessagePage() {
                 value={group}
                 onChange={handleGroupChange}
               >
-                <MenuItem value="All">All</MenuItem>
-                <MenuItem value="GP">GP</MenuItem>
-                <MenuItem value="KAES">KAES</MenuItem>
-                <MenuItem value="Infor">Infor</MenuItem>
+                <MenuItem value="0">ALL</MenuItem>
+                <MenuItem value="1">HR</MenuItem>
+                <MenuItem value="2">Technology</MenuItem>
+                <MenuItem value="3">Finance</MenuItem>
               </Select>
             </Stack>
 
@@ -132,17 +122,24 @@ export default function MessagePage() {
                 value={timing}
                 onChange={handleTimingChange}
               >
-                <MenuItem value="Noon">Noon</MenuItem>
-                <MenuItem value="Evening">Evening</MenuItem>
-                <MenuItem value="AfterLogin">After Login</MenuItem>
+                <MenuItem value="1">Immediate</MenuItem>
+                <MenuItem value="2">Hourly</MenuItem>
+                <MenuItem value="3">Weekly</MenuItem>
+                <MenuItem value="4">Monthly</MenuItem>
               </Select>
             </Stack>
 
             <Stack>
               <InputLabel id="demo-simple-select-3">Type</InputLabel>
               <Select id="demo-simple-select-3" label="Type" value={type} onChange={handleType}>
-                <MenuItem value="password">Password</MenuItem>
-                <MenuItem value="data_breach">Data Breach</MenuItem>
+                <MenuItem value="1">Authentication</MenuItem>
+                <MenuItem value="2">Data Breach</MenuItem>
+                <MenuItem value="3">Data BackUp</MenuItem>
+                <MenuItem value="4">Password</MenuItem>
+                <MenuItem value="5">Phishing</MenuItem>
+                <MenuItem value="6">Security</MenuItem>
+                <MenuItem value="7">Threat</MenuItem>
+                <MenuItem value="8">Software</MenuItem>
               </Select>
             </Stack>
           </Stack>
