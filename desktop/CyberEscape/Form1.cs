@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -77,7 +78,7 @@ namespace CyberEscape
                 notifications.Clear();
 
                 string machineName = Environment.MachineName;
-                string apiUrl = "http://localhost:3000/userNotification?userId=5CG1431YJG";
+                string apiUrl = "http://localhost:3000/userNotificationUnRead?userId=5CD9492J9H";
 
                 HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
                 response.EnsureSuccessStatusCode();
@@ -85,11 +86,11 @@ namespace CyberEscape
                 string responseBody = await response.Content.ReadAsStringAsync();
                 notifications = JsonConvert.DeserializeObject<List<UserNotification>>(responseBody);
 
-                var today = DateTime.Now.Date; // Get the current date without time
+                var today = DateTime.Now; // Get the current date without time
                 var topNotification = notifications
                     .Where(n => n.scheduledDate.Date <= today)
-                    .OrderBy(n => n.scheduledDate) // Optional: order by date if needed
-                    .FirstOrDefault(); // Pick only the top one
+                    .OrderBy(n => n.scheduledDate)
+                    .LastOrDefault(); // Pick only the lastest date
 
                 if (topNotification == null)
                 {
@@ -112,7 +113,7 @@ namespace CyberEscape
 
         private void OpenMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO - show the web page
+            Browser.OpenLink("http://localhost:3030/");
         }
 
         private void ExitMenuItem_Click(object sender, EventArgs e)
@@ -133,29 +134,6 @@ namespace CyberEscape
         private void ShowToastNotification(UserNotification notification)
         {
             LogMessage($"Showing notification for messag ${JsonConvert.SerializeObject(notification)}");
-
-            //string baseUrl = "http://localhost:3000"; // Ensure this is correct
-            //string imagePath = "/images/4.png"; // Make sure this is a valid path
-
-            //// Construct the full URL for the image
-            //string fullUrl = $"{baseUrl}/{Uri.EscapeDataString(imagePath)}";
-
-            //// Validate the URI
-            //if (!Uri.TryCreate(fullUrl, UriKind.Absolute, out Uri imageUri))
-            //{
-            //    throw new InvalidOperationException("The constructed URI is invalid.");
-            //}
-
-
-            //// Convert the image URL to Base64
-            //string base64Image = ImageConverter.ImageUrlToBase64("https://picsum.photos/360/202?image=883");
-            //if (base64Image == null)
-            //{
-            //    throw new Exception("Failed to convert image to Base64.");
-            //}
-
-            //// Create the Data URI for the Base64 image
-            //string imageDataUri = $"data:image/png;base64,{base64Image}";
 
             var imagePath = GetLocalImagePath(notification.imagePath);
 
