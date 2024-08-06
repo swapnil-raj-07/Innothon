@@ -39,9 +39,10 @@ export const DataProvider = ({ children }) => {
             isRead: post.isRead,
             createdAt: post.createdDate,
             pointer: post.points,
+            type: post.type,
             author: {
               name: post.createdBy,
-              avatarUrl: `/assets/images/avatars/avatar_${(index % 24) + 1}.jpg`,
+              avatarUrl: `/assets/images/type/${post.type}.png`,
             },
           }))
           .sort((a, b) => {
