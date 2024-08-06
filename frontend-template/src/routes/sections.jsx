@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Navigate, Outlet, useRoutes } from 'react-router-dom';
+import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 
 import DashboardLayout from 'src/layouts/dashboard';
 

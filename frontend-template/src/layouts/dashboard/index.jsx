@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 
@@ -8,7 +8,6 @@ import { account } from 'src/_mock/account';
 import Nav from './nav';
 import Main from './main';
 import Header from './header';
-
 import { useData } from '../../dataContext';
 
 // ----------------------------------------------------------------------

@@ -1,10 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button'; // Import Button
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+
 import { alpha } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+
 import { useData } from '../dataContext';
 
 const PostDetail = () => {
