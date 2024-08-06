@@ -15,20 +15,20 @@ import { useData } from '../../dataContext';
 
 export default function DashboardLayout({ children }) {
   const [openNav, setOpenNav] = useState(false);
-  const { dataA, loading, error } = useData();
+  const { user, loading, error } = useData();
   const [userAccount, setUserAccount] = useState(account);
 
   useEffect(() => {
-    console.log('dataA in useEffect:', dataA);
-    if (dataA) {
+    console.log('dataA in useEffect:', user);
+    if (user) {
       setUserAccount({
-        displayName: dataA.name,
-        email: dataA.email,
+        displayName: `${user.firstName} ${user.lastName}`,
+        email: user.emailId,
         photoURL: '/assets/images/avatars/avatar_25.jpg',
         isAdmin: true  
       });
     }
-  }, [dataA]);
+  }, [user]);
 
   if (loading) {
     return <div>Loading...</div>;

@@ -1,30 +1,33 @@
 import * as React from 'react';
-import axios from 'axios';
+import { useContext } from 'react';
 
 import Card from '@mui/material/Card';
+
 import Stack from '@mui/material/Stack';
-
 import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import InputLabel from '@mui/material/InputLabel';
+
+import { useData } from 'src/dataContext';
 
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
 export default function MessagePage() {
+  const { postData, user } = useData();
+
   const [timing, setTiming] = React.useState('AfterLogin');
   const [group, setGroup] = React.useState('All');
   const [type, setType] = React.useState('password');
-  const [header, setHeader] = React.useState(null);
-  const [message, setMessage] = React.useState(null);
-  const [pointer, setPointer] = React.useState(null);
-  const [publishingTime, setPublishingTime] = React.useState(null);
+  const [header, setHeader] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [pointer, setPointer] = React.useState('');
+  const [publishingTime, setPublishingTime] = React.useState('');
 
   const handleTimingChange = (event) => {
     setTiming(event.target.value);
@@ -37,25 +40,34 @@ export default function MessagePage() {
   const handleType = (event) => {
     setType(event.target.value);
   };
-
+ 
   const handleSend = () => {
-    axios
-      .post('http://localhost:3000/notification', {
-        header,
-        body: message,
-        type,
-        groupId: group,
-        scheduledDate: publishingTime.split('T')[0],
-        scheduledTime: publishingTime.split('T')[1],
-        mode: timing,
-        points: pointer,
-        imagePath: `/assets/images/covers/cover_1.jpg`,
-        createdDate: new Date().toISOString(),
-        createdBy: 'Admin',
-      })
-      .then((response) => {
-        console.log('response.data', response.data);
-      });
+    console.log('Post', {
+      header,
+      body: message,
+      type,
+      groupId: group,
+      scheduledDate: publishingTime.split('T')[0],
+      scheduledTime: publishingTime.split('T')[1],
+      mode: timing,
+      points: pointer,
+      imagePath: `/assets/images/covers/cover_1.jpg`,
+      createdDate: new Date().toISOString(),
+      createdBy: user.firstName,
+    });
+    postData('http://localhost:3000/notification', {
+      header,
+      body: message,
+      type,
+      groupId: group,
+      scheduledDate: publishingTime.split('T')[0],
+      scheduledTime: publishingTime.split('T')[1],
+      mode: timing,
+      points: pointer,
+      imagePath: `/assets/images/covers/cover_1.jpg`,
+      createdDate: new Date().toISOString(),
+      createdBy: user.firstName,
+    });
   };
 
   return (
