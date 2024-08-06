@@ -10,28 +10,27 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
 import { account } from 'src/_mock/account';
-import { FormControlLabel, Switch, ToggleButton } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-const MENU_OPTIONS = [
-  {
-    label: 'Home',
-    icon: 'eva:home-fill',
-  },
-  {
-    label: 'Profile',
-    icon: 'eva:person-fill',
-  },
-  {
-    label: 'Settings',
-    icon: 'eva:settings-2-fill',
-  },
-  // {
-  //   label: 'Is Admin',
-  //   icon: 'eva:smiling-face-fill',
-  // },
-];
+// const MENU_OPTIONS = [
+//   {
+//     label: 'Home',
+//     icon: 'eva:home-fill',
+//   },
+//   {
+//     label: 'Profile',
+//     icon: 'eva:person-fill',
+//   },
+//   {
+//     label: 'Settings',
+//     icon: 'eva:settings-2-fill',
+//   },
+//   // {
+//   //   label: 'Is Admin',
+//   //   icon: 'eva:smiling-face-fill',
+//   // },
+// ];
 
 // ----------------------------------------------------------------------
 

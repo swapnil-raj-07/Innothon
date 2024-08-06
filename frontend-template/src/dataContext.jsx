@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { useMemo, useState, useEffect, useContext, createContext } from 'react';
 
 const DataContext = createContext();
 const BASE_URL = 'http://localhost:3000';

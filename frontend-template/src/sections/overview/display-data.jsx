@@ -1,8 +1,9 @@
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
-import Chart from 'react-apexcharts'; // Ensure you have react-apexcharts installed
+import Chart from 'react-apexcharts';
+
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent'; // Ensure you have react-apexcharts installed
 
 function DisplayData({ news }) {
   const chartOptions = {
