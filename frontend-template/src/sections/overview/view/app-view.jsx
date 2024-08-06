@@ -1,14 +1,13 @@
 import { useState } from 'react';
 
-
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 
-import AppCurrentVisits from '../app-current-visits';
+import DisplayData from '../display-data';
 import AppNewsUpdate from '../app-news-update';
+import AppCurrentVisits from '../app-current-visits';
 import AppWebsiteVisits from '../app-website-visits';
 import AppWidgetSummary from '../app-widget-summary';
-import DisplayData from '../display-data';
 
 const notificationsList = [
   {
@@ -74,14 +73,14 @@ export default function AppView() {
     setSelectedNotification(notificationsList.find(i => i.id === notification.id));
   };
 
-  const containerHeight = '400px';
+  
 
   return (
     <Container maxWidth="xl">
       <Grid container spacing={3}>
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="Notifications sent"
+            title="Notifications Sent"
             total={120}
             color="success"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
@@ -97,7 +96,7 @@ export default function AppView() {
         </Grid>
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="Successful acknowledgement"
+            title="Successful"
             total={1723315}
             color="warning"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_buy.png" />}

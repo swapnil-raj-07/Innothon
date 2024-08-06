@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
+
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import CardHeader from '@mui/material/CardHeader';
 
 import { fToNow } from 'src/utils/format-time';
-import Iconify from 'src/components/iconify';
+
 import Scrollbar from 'src/components/scrollbar';
 
 // ----------------------------------------------------------------------
@@ -27,7 +26,7 @@ export default function AppNewsUpdate({ title, subheader, list, onNewsClick, ...
         </Stack>
       </Scrollbar>
 
-      <Divider sx={{ borderStyle: 'dashed' }} />
+      {/* <Divider sx={{ borderStyle: 'dashed' }} />
 
       <Box sx={{ p: 2, textAlign: 'right' }}>
         <Button
@@ -37,7 +36,7 @@ export default function AppNewsUpdate({ title, subheader, list, onNewsClick, ...
         >
           View all
         </Button>
-      </Box>
+      </Box> */}
     </Card>
   );
 }

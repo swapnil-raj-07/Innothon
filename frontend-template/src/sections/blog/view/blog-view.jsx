@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import Radio from '@mui/material/Radio';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
-import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { useData } from 'src/dataContext';
 
 import PostCard from '../post-card';
-
 
 // ----------------------------------------------------------------------
 
@@ -27,8 +24,10 @@ export default function UserDashboardView() {
 
   const handleRadioChange = (event) => {
     if (event.target.value === 'all') setUserPosts(userNotifications);
-    if (event.target.value === 'unread') setUserPosts(userNotifications.filter((post) => !post.isRead));
-    if (event.target.value === 'read') setUserPosts(userNotifications.filter((post) => post.isRead));
+    if (event.target.value === 'unread')
+      setUserPosts(userNotifications.filter((post) => !post.isRead));
+    if (event.target.value === 'read')
+      setUserPosts(userNotifications.filter((post) => post.isRead));
   };
 
   return (
