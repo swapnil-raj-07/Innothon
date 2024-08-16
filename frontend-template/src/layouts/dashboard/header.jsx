@@ -1,18 +1,18 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
+import Toolbar from '@mui/material/Toolbar';
+import { useTheme } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
-import Stack from '@mui/material/Stack';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/material/styles';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
@@ -20,8 +20,8 @@ import { bgBlur } from 'src/theme/css';
 
 import Iconify from 'src/components/iconify';
 
+import { NAV, HEADER } from './config-layout';
 import AccountPopover from './common/account-popover';
-import { HEADER, NAV } from './config-layout';
 
 export default function Header({ onOpenNav, userDetails }) {
   const theme = useTheme();
@@ -29,7 +29,7 @@ export default function Header({ onOpenNav, userDetails }) {
 
   // State for handling dialog visibility and selected redeem option
   const [open, setOpen] = useState(false);
-  const [redeemOption, setRedeemOption] = useState(null);
+  const [setRedeemOption] = useState(null);
 
   // Points available
   const points = 2500; // Replace this with dynamic points if available
