@@ -216,6 +216,48 @@ app.post("/user", async (req, res) => {
   });
 });
 
+// Create an endpoint to store user data
+app.post("/Employee", async (req, res) => {
+  const {
+    hostName,
+    firstName,
+    lastName,
+    emailId,
+    password,
+    groupId,
+    createdDate,
+    createdBy,
+    isActive,
+  } = req.body;
+  const db = await openDb();
+  const result = await db.run(
+    "INSERT INTO User (hostName, firstName,  lastName,  emailId,  password,  groupId, createdDate, createdBy, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    [
+      hostName,
+      firstName,
+      lastName,
+      emailId,
+      password,
+      groupId,
+      createdDate,
+      createdBy,
+      isActive,
+    ]
+  );
+  res.status(201).json({
+    id: result.lastID,
+    hostName,
+    firstName,
+    lastName,
+    emailId,
+    password,
+    groupId,
+    createdDate,
+    createdBy,
+    isActive,
+  });
+});
+
 // Create an endpoint to store notification data
 app.post("/notification", async (req, res) => {
   try {
